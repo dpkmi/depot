@@ -1,0 +1,90 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-haiku-4-5-20251001",
+  "small_model": "anthropic/claude-haiku-4-5-20251001",
+  "default_agent": "orchestrator",
+
+  "provider": {
+    "anthropic": {
+      "options": {
+        "timeout": 600000,
+        "setCacheKey": true
+      }
+    },
+    "openai": {
+      "options": {
+        "timeout": 600000
+      }
+    },
+    "google": {
+      "options": {
+        "timeout": 600000
+      }
+    }
+  },
+
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "*": "ask",
+      "git status": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "dotnet build*": "allow",
+      "dotnet test*": "allow",
+      "npm test*": "allow",
+      "npx jest*": "allow",
+      "npx tsc --noEmit": "allow",
+      "npx prettier*": "allow",
+      "npx expo lint*": "allow",
+      "ng lint*": "allow",
+      "npm audit*": "allow",
+      "npx expo doctor*": "allow"
+    },
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": {
+      "*": "allow"
+    },
+    "task": {
+      "*": "allow"
+    }
+  },
+
+  "tools": {
+    "read": true,
+    "write": true,
+    "edit": true,
+    "bash": true,
+    "grep": true,
+    "glob": true,
+    "list": true,
+    "patch": true,
+    "skill": true,
+    "todowrite": true,
+    "todoread": true,
+    "webfetch": true,
+    "websearch": true,
+    "question": true
+  },
+
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      "dist/**",
+      "bin/**",
+      "obj/**",
+      ".git/**"
+    ]
+  },
+
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  },
+
+  "instructions": [
+    "README.md"
+  ]
+}

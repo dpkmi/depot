@@ -1,92 +1,103 @@
-# Depot — AI Agent & Skills Configuration
+# Depot — OpenCode Agent & Skills Configuratie
 
-Dit repository bevat de gedeelde AI agent configuratie en skills voor alle development teams. Pull deze branch om altijd de meest recente agent-configuratie op je systeem te hebben.
+Dit repository bevat de gedeelde AI agent en skills configuratie voor alle development teams, gebouwd voor **OpenCode** met GitHub Copilot koppeling.
+
+Pull de `agents/setup` branch om altijd de meest recente configuratie te hebben.
 
 ## Quick Start
 
 ```bash
-# Clone of pull de agents/setup branch
-git clone -b agents/setup <repo-url> .agents-config
+# 1. Clone de repo
+git clone -b agents/setup <repo-url> ~/depot-agents
 
-# Kopieer naar je project root (of symlink)
-cp -r .agents-config/.agents /pad/naar/je/project/
-cp .agents-config/AGENTS.md /pad/naar/je/project/
-cp -r .agents-config/agents/ /pad/naar/je/project/
+# 2. Ga naar je project root
+cd /pad/naar/jouw-project
 
-# Of gebruik een symlink (aanbevolen — altijd up to date)
-ln -s /pad/naar/.agents-config/.agents /pad/naar/je/project/.agents
-ln -s /pad/naar/.agents-config/AGENTS.md /pad/naar/je/project/AGENTS.md
-ln -s /pad/naar/.agents-config/agents /pad/naar/je/project/agents
+# 3. Symlink de configuratie (aanbevolen)
+ln -s ~/depot-agents/.opencode .opencode
+ln -s ~/depot-agents/opencode.json opencode.json
+
+# Of kopieer (nadeel: handmatig updaten)
+cp -r ~/depot-agents/.opencode .opencode
+cp ~/depot-agents/opencode.json opencode.json
 ```
 
 ## Structuur
 
 ```
 depot/
-├── AGENTS.md                              # Orchestrator (Haiku 4.5)
-├── agents/                                # Sub-agent definities
-│   ├── planner.md                         # Opus 4.6
-│   ├── scrum-master.md                    # Haiku 4.5
-│   ├── developer-core.md                  # Opus 4.6
-│   ├── developer-angular.md               # Opus 4.6
-│   ├── developer-react-native.md          # Opus 4.6
-│   ├── tester.md                          # Sonnet 4.5
-│   ├── debugger.md                        # ChatGPT Codex 5.2 xHigh
-│   ├── security-specialist.md             # Opus 4.6
-│   ├── code-reviewer.md                   # Sonnet 4.5
-│   └── ux-designer.md                     # Gemini 3.2
-├── .agents/
-│   └── skills/                            # Invokable skills
-│       ├── plan/                          # Feature planning
-│       ├── develop-core/                  # C# / WinForms / VB.NET
-│       ├── develop-angular/               # Angular / TypeScript / Tailwind
-│       ├── develop-react-native/          # React Native / Expo
-│       ├── test-angular/                  # Jest tests voor Angular
-│       ├── test-core/                     # Unit tests voor .NET
-│       ├── test-react-native/             # Jest tests voor React Native
-│       ├── scrum-breakdown/               # Ticket breakdown
-│       ├── security-audit/                # Security review
-│       ├── debug/                         # Bug investigation
-│       ├── code-review/                   # Code review
-│       └── ux-design/                     # UI/UX design (Gemini 3.2)
-├── core/
-│   └── AGENTS.md                          # Core team regels
-└── frontend/
-    ├── angular/
-    │   └── AGENTS.md                      # Angular team regels
-    └── react-native/
-        └── AGENTS.md                      # React Native team regels
+├── opencode.json                              # Project config (model, providers, permissions)
+└── .opencode/
+    ├── agents/                                # Agent definities (markdown + frontmatter)
+    │   ├── orchestrator.md                    # Primary — routeert taken
+    │   ├── planner.md                         # Subagent — architectuur
+    │   ├── scrum-master.md                    # Subagent — tickets
+    │   ├── developer-core.md                  # Subagent — C#/WinForms/VB
+    │   ├── developer-angular.md               # Subagent — Angular/TS/Tailwind
+    │   ├── developer-react-native.md          # Subagent — RN/Expo/StyleSheet
+    │   ├── tester.md                          # Subagent — QA/Jest/xUnit
+    │   ├── debugger.md                        # Subagent — root cause analysis
+    │   ├── security-specialist.md             # Subagent — OWASP/security
+    │   ├── code-reviewer.md                   # Subagent — code review
+    │   └── ux-designer.md                     # Subagent — UI/UX design
+    └── skills/                                # Herbruikbare skill instructies
+        ├── plan/SKILL.md
+        ├── develop-core/SKILL.md
+        ├── develop-angular/SKILL.md
+        ├── develop-react-native/SKILL.md
+        ├── test-angular/SKILL.md
+        ├── test-core/SKILL.md
+        ├── test-react-native/SKILL.md
+        ├── scrum-breakdown/SKILL.md
+        ├── security-audit/SKILL.md
+        ├── debug/SKILL.md
+        ├── code-review/SKILL.md
+        └── ux-design/SKILL.md
 ```
 
 ## Agent Model Overzicht
 
-| Agent | Model | Temp | Reasoning | Waarom |
-|-------|-------|------|-----------|--------|
-| **Orchestrator** | Claude Haiku 4.5 | 0.1 | low | Snel, goedkoop, hoeft alleen te routeren |
-| **Planner** | Claude Opus 4.6 | 0.2 | high | Diep redeneren voor architectuur |
-| **Scrum Master** | Claude Haiku 4.5 | 0.1 | medium | Simpele taken: tickets opsplitsen |
-| **Developer (alle)** | Claude Opus 4.6 | 0.1 | high | Beste codeerkwaliteit, deterministic output |
-| **Tester** | Claude Sonnet 4.5 | 0.1 | medium | Goede balans kwaliteit/snelheid |
-| **Debugger** | ChatGPT Codex 5.2 xHigh | 0.15 | xhigh | Gespecialiseerd in diepe code analyse |
-| **Security** | Claude Opus 4.6 | 0.1 | xhigh | Diepgaande security analyse, geen risico |
-| **Code Reviewer** | Claude Sonnet 4.5 | 0.15 | medium | Goede balans voor review |
-| **UX Designer** | Gemini 3.2 | 0.8 | high | Creatief werk, multimodaal, web research |
+| Agent | Mode | Model | Temp | Tools |
+|-------|------|-------|------|-------|
+| **Orchestrator** | primary | `anthropic/claude-haiku-4-5` | 0.1 | task, question, skill |
+| **Planner** | subagent | `anthropic/claude-opus-4-6` | 0.2 | read, grep, glob, webfetch |
+| **Scrum Master** | subagent | `anthropic/claude-haiku-4-5` | 0.1 | read, todowrite |
+| **Developer Core** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, write, edit, bash |
+| **Developer Angular** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, write, edit, bash |
+| **Developer RN** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, write, edit, bash |
+| **Tester** | subagent | `anthropic/claude-sonnet-4-5` | 0.1 | read, write, edit, bash |
+| **Debugger** | subagent | `openai/chatgpt-codex-5.2-xhigh` | 0.15 | read, bash, grep, lsp |
+| **Security** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, bash, grep, webfetch |
+| **Code Reviewer** | subagent | `anthropic/claude-sonnet-4-5` | 0.15 | read, grep, glob |
+| **UX Designer** | subagent | `google/gemini-3.2` | 0.8 | read, webfetch, websearch |
+
+## Hoe te Gebruiken
+
+### Agents aanroepen
+- **Tab** — wissel tussen primary agents (orchestrator)
+- **@planner** — roep planner subagent aan
+- **@developer-angular** — roep Angular developer aan
+- **@security-specialist** — roep security review aan
+- Etc.
+
+### Skills gebruiken
+Skills worden automatisch geladen door agents wanneer relevant, of je kunt ze expliciet aanroepen.
 
 ## Pipeline
 
 ### Feature Development
 ```
-Planner → UX Designer (indien UI) → Scrum Master → Developer → Tester → Security → Code Review
+@planner → @ux-designer (indien UI) → @scrum-master → @developer-[team] → @tester → @security-specialist → @code-reviewer
 ```
 
 ### Bug Fix
 ```
-Debugger → Developer → Tester
+@debugger → @developer-[team] → @tester
 ```
 
 ### Security Audit
 ```
-Security Specialist (standalone)
+@security-specialist (standalone)
 ```
 
 ## Teams
@@ -94,32 +105,34 @@ Security Specialist (standalone)
 ### Core Team
 - Desktop applicatie: C#, WinForms, VB.NET
 - Complexe business logic
-- Zie `core/AGENTS.md` voor team-specifieke regels
+- Agent: `@developer-core`, Skill: `develop-core`
 
 ### Angular Team (2 developers)
-- TypeScript strict mode
-- Tailwind CSS
-- Jest + .spec.ts bestanden
-- ESLint + Prettier
-- Zie `frontend/angular/AGENTS.md`
+- Angular 17+, TypeScript strict, Tailwind CSS
+- Jest + `.spec.ts`, ESLint + Prettier
+- Agent: `@developer-angular`, Skill: `develop-angular`
 
 ### React Native Team (1 developer)
-- Expo SDK 54+
-- TypeScript strict mode
+- Expo SDK 54+, TypeScript strict
 - Native CSS (StyleSheet) — GEEN Tailwind
-- Jest
-- ESLint + Prettier
-- Zie `frontend/react-native/AGENTS.md`
+- Jest, ESLint + Prettier
+- Agent: `@developer-react-native`, Skill: `develop-react-native`
+
+## Environment Setup
+
+Stel API keys in als environment variables op je systeem:
+
+```bash
+# ~/.zshrc of ~/.bashrc
+export ANTHROPIC_API_KEY="sk-ant-..."
+export OPENAI_API_KEY="sk-..."
+export GOOGLE_API_KEY="AI..."
+```
 
 ## Updaten
 
 ```bash
-# Pull de laatste versie
+cd ~/depot-agents
 git pull origin agents/setup
-
-# Klaar — als je symlinks gebruikt zijn alle projecten direct bijgewerkt
+# Symlinks → direct actief in alle projecten
 ```
-
-## Aanpassen
-
-Om team-specifieke overrides toe te voegen, maak een `AGENTS.override.md` in de betreffende directory. Dit overschrijft de standaard `AGENTS.md` regels voor die scope.
