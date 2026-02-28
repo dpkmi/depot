@@ -1,0 +1,8 @@
+interface:
+  display_name: "Test Angular"
+  short_description: "Jest testing for Angular projects"
+  brand_color: "#C21325"
+  default_prompt: "Write comprehensive Jest tests (.spec.ts) for the specified Angular code."
+
+policy:
+  allow_implicit_invocation: true

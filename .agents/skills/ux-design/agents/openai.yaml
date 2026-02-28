@@ -1,0 +1,14 @@
+interface:
+  display_name: "UX Designer"
+  short_description: "UI/UX design, wireframes, and design systems"
+  icon_small: ""
+  brand_color: "#EC4899"
+  default_prompt: "Research current design best practices and create a detailed design specification for the requested feature."
+
+policy:
+  allow_implicit_invocation: true
+
+model:
+  name: "gemini-3.2"
+  provider: "google"
+  reason: "Gemini 3.2 excels at multimodal design tasks, visual analysis, and web research for design inspiration"

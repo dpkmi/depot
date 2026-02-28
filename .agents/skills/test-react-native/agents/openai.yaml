@@ -1,0 +1,8 @@
+interface:
+  display_name: "Test RN"
+  short_description: "Jest testing for React Native / Expo"
+  brand_color: "#61DAFB"
+  default_prompt: "Write comprehensive Jest tests for the specified React Native component or hook."
+
+policy:
+  allow_implicit_invocation: true

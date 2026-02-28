@@ -1,0 +1,8 @@
+interface:
+  display_name: "Security"
+  short_description: "Security review and vulnerability scanning"
+  brand_color: "#EF4444"
+  default_prompt: "Perform a comprehensive security audit on the specified code changes."
+
+policy:
+  allow_implicit_invocation: true

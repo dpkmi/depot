@@ -1,0 +1,8 @@
+interface:
+  display_name: "Reviewer"
+  short_description: "Code quality and PR review"
+  brand_color: "#8B5CF6"
+  default_prompt: "Review the specified code for quality, correctness, and adherence to team standards."
+
+policy:
+  allow_implicit_invocation: true

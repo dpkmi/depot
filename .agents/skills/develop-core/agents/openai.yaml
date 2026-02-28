@@ -1,0 +1,8 @@
+interface:
+  display_name: "Dev Core"
+  short_description: "C# / WinForms / VB.NET development"
+  brand_color: "#512BD4"
+  default_prompt: "Implement the requested changes following Core team standards."
+
+policy:
+  allow_implicit_invocation: true

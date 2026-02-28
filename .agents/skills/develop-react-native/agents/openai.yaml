@@ -1,0 +1,8 @@
+interface:
+  display_name: "Dev RN"
+  short_description: "React Native / Expo mobile development"
+  brand_color: "#61DAFB"
+  default_prompt: "Implement the requested React Native changes with Expo SDK 54+ and TypeScript."
+
+policy:
+  allow_implicit_invocation: true

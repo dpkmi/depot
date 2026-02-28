@@ -1,0 +1,8 @@
+interface:
+  display_name: "Planner"
+  short_description: "Technical architecture and implementation planning"
+  brand_color: "#6366F1"
+  default_prompt: "Analyze the requirement and create a detailed implementation plan."
+
+policy:
+  allow_implicit_invocation: true

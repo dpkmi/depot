@@ -1,0 +1,8 @@
+interface:
+  display_name: "Dev Angular"
+  short_description: "Angular / TypeScript / Tailwind development"
+  brand_color: "#DD0031"
+  default_prompt: "Implement the requested Angular changes with TypeScript strict mode and Tailwind CSS."
+
+policy:
+  allow_implicit_invocation: true

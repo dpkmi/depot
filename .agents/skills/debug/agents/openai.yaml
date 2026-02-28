@@ -1,0 +1,8 @@
+interface:
+  display_name: "Debugger"
+  short_description: "Bug investigation and root cause analysis"
+  brand_color: "#F59E0B"
+  default_prompt: "Investigate the reported issue and provide a detailed root cause analysis."
+
+policy:
+  allow_implicit_invocation: true

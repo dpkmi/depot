@@ -1,0 +1,8 @@
+interface:
+  display_name: "Test Core"
+  short_description: "Unit testing for C# / .NET projects"
+  brand_color: "#512BD4"
+  default_prompt: "Write comprehensive unit tests for the specified C# code."
+
+policy:
+  allow_implicit_invocation: true

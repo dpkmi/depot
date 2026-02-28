@@ -1,0 +1,8 @@
+interface:
+  display_name: "Scrum"
+  short_description: "Sprint planning and ticket breakdown"
+  brand_color: "#10B981"
+  default_prompt: "Break down the requirement into sprint-ready tickets with story points and dependencies."
+
+policy:
+  allow_implicit_invocation: true
