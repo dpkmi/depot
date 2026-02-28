@@ -1,37 +1,37 @@
-# Depot — OpenCode Agent & Skills Configuratie
+# Depot — OpenCode Agent & Skills Configuration
 
-Dit repository bevat de gedeelde AI agent en skills configuratie voor alle development teams, gebouwd voor **OpenCode** met GitHub Copilot koppeling.
+This repository contains the shared AI agent and skills configuration for all development teams, built for **OpenCode** with GitHub Copilot integration.
 
-Pull de `agents/setup` branch om altijd de meest recente configuratie te hebben.
+Pull the `agents/setup` branch to always have the latest configuration.
 
 ## Quick Start
 
 ```bash
-# 1. Clone de repo
+# 1. Clone the repo
 git clone -b agents/setup <repo-url> ~/depot-agents
 
-# 2. Ga naar je project root
-cd /pad/naar/jouw-project
+# 2. Navigate to your project root
+cd /path/to/your/project
 
-# 3. Symlink de configuratie (aanbevolen)
+# 3. Symlink the configuration (recommended)
 ln -s ~/depot-agents/.opencode .opencode
 ln -s ~/depot-agents/opencode.json opencode.json
 
-# Of kopieer (nadeel: handmatig updaten)
+# Or copy (downside: manual updates required)
 cp -r ~/depot-agents/.opencode .opencode
 cp ~/depot-agents/opencode.json opencode.json
 ```
 
-## Structuur
+## Structure
 
 ```
 depot/
 ├── opencode.json                              # Project config (model, providers, permissions)
 └── .opencode/
-    ├── agents/                                # Agent definities (markdown + frontmatter)
-    │   ├── orchestrator.md                    # Primary — routeert taken
-    │   ├── planner.md                         # Subagent — architectuur
-    │   ├── scrum-master.md                    # Subagent — tickets
+    ├── agents/                                # Agent definitions (markdown + frontmatter)
+    │   ├── orchestrator.md                    # Primary — routes tasks
+    │   ├── planner.md                         # Subagent — architecture
+    │   ├── scrum-master.md                    # Subagent — ticket breakdown
     │   ├── developer-core.md                  # Subagent — C#/WinForms/VB
     │   ├── developer-angular.md               # Subagent — Angular/TS/Tailwind
     │   ├── developer-react-native.md          # Subagent — RN/Expo/StyleSheet
@@ -40,7 +40,7 @@ depot/
     │   ├── security-specialist.md             # Subagent — OWASP/security
     │   ├── code-reviewer.md                   # Subagent — code review
     │   └── ux-designer.md                     # Subagent — UI/UX design
-    └── skills/                                # Herbruikbare skill instructies
+    └── skills/                                # Reusable skill instructions
         ├── plan/SKILL.md
         ├── develop-core/SKILL.md
         ├── develop-angular/SKILL.md
@@ -55,7 +55,7 @@ depot/
         └── ux-design/SKILL.md
 ```
 
-## Agent Model Overzicht
+## Agent Overview
 
 | Agent | Mode | Model | Temp | Tools |
 |-------|------|-------|------|-------|
@@ -71,23 +71,23 @@ depot/
 | **Code Reviewer** | subagent | `anthropic/claude-sonnet-4-5` | 0.15 | read, grep, glob |
 | **UX Designer** | subagent | `google/gemini-3.2` | 0.8 | read, webfetch, websearch |
 
-## Hoe te Gebruiken
+## Usage
 
-### Agents aanroepen
-- **Tab** — wissel tussen primary agents (orchestrator)
-- **@planner** — roep planner subagent aan
-- **@developer-angular** — roep Angular developer aan
-- **@security-specialist** — roep security review aan
-- Etc.
+### Invoking Agents
+- **Tab** — switch between primary agents (orchestrator)
+- **@planner** — invoke the planner subagent
+- **@developer-angular** — invoke the Angular developer
+- **@security-specialist** — invoke a security review
+- etc.
 
-### Skills gebruiken
-Skills worden automatisch geladen door agents wanneer relevant, of je kunt ze expliciet aanroepen.
+### Using Skills
+Skills are automatically loaded by agents when relevant. Each agent has explicit skill access permissions defined in its frontmatter.
 
 ## Pipeline
 
 ### Feature Development
 ```
-@planner → @ux-designer (indien UI) → @scrum-master → @developer-[team] → @tester → @security-specialist → @code-reviewer
+@planner → @ux-designer (if UI) → @scrum-master → @developer-[team] → @tester → @security-specialist → @code-reviewer
 ```
 
 ### Bug Fix
@@ -103,8 +103,8 @@ Skills worden automatisch geladen door agents wanneer relevant, of je kunt ze ex
 ## Teams
 
 ### Core Team
-- Desktop applicatie: C#, WinForms, VB.NET
-- Complexe business logic
+- Desktop application: C#, WinForms, VB.NET
+- Complex business logic
 - Agent: `@developer-core`, Skill: `develop-core`
 
 ### Angular Team (2 developers)
@@ -114,25 +114,25 @@ Skills worden automatisch geladen door agents wanneer relevant, of je kunt ze ex
 
 ### React Native Team (1 developer)
 - Expo SDK 54+, TypeScript strict
-- Native CSS (StyleSheet) — GEEN Tailwind
+- Native CSS (StyleSheet) — no Tailwind
 - Jest, ESLint + Prettier
 - Agent: `@developer-react-native`, Skill: `develop-react-native`
 
 ## Environment Setup
 
-Stel API keys in als environment variables op je systeem:
+Set API keys as environment variables on your system:
 
 ```bash
-# ~/.zshrc of ~/.bashrc
+# ~/.zshrc or ~/.bashrc
 export ANTHROPIC_API_KEY="sk-ant-..."
 export OPENAI_API_KEY="sk-..."
 export GOOGLE_API_KEY="AI..."
 ```
 
-## Updaten
+## Updating
 
 ```bash
 cd ~/depot-agents
 git pull origin agents/setup
-# Symlinks → direct actief in alle projecten
+# Symlinks → immediately active in all projects
 ```
