@@ -6,3 +6,12 @@ interface:
 
 policy:
   allow_implicit_invocation: true
+
+model:
+  name: "chatgpt-codex-5.2-xhigh"
+  provider: "openai"
+  parameters:
+    temperature: 0.15
+    top_p: 0.9
+    max_tokens: 16384
+    reasoning_effort: "xhigh"

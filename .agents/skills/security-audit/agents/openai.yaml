@@ -6,3 +6,12 @@ interface:
 
 policy:
   allow_implicit_invocation: true
+
+model:
+  name: "claude-opus-4-6"
+  provider: "anthropic"
+  parameters:
+    temperature: 0.1
+    top_p: 0.9
+    max_tokens: 16384
+    reasoning_effort: "xhigh"

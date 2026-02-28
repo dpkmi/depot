@@ -60,17 +60,17 @@ depot/
 
 ## Agent Model Overzicht
 
-| Agent | Model | Waarom |
-|-------|-------|--------|
-| **Orchestrator** | Claude Haiku 4.5 | Snel, goedkoop, hoeft alleen te routeren |
-| **Planner** | Claude Opus 4.6 | Diep redeneren voor architectuur |
-| **Scrum Master** | Claude Haiku 4.5 | Simpele taken: tickets opsplitsen |
-| **Developer (alle)** | Claude Opus 4.6 | Beste codeerkwaliteit |
-| **Tester** | Claude Sonnet 4.5 | Goede balans kwaliteit/snelheid |
-| **Debugger** | ChatGPT Codex 5.2 xHigh | Gespecialiseerd in code analyse |
-| **Security** | Claude Opus 4.6 | Diepgaande security analyse nodig |
-| **Code Reviewer** | Claude Sonnet 4.5 | Goede balans voor review |
-| **UX Designer** | Gemini 3.2 | Multimodaal, kan designs analyseren en web researchen |
+| Agent | Model | Temp | Reasoning | Waarom |
+|-------|-------|------|-----------|--------|
+| **Orchestrator** | Claude Haiku 4.5 | 0.1 | low | Snel, goedkoop, hoeft alleen te routeren |
+| **Planner** | Claude Opus 4.6 | 0.2 | high | Diep redeneren voor architectuur |
+| **Scrum Master** | Claude Haiku 4.5 | 0.1 | medium | Simpele taken: tickets opsplitsen |
+| **Developer (alle)** | Claude Opus 4.6 | 0.1 | high | Beste codeerkwaliteit, deterministic output |
+| **Tester** | Claude Sonnet 4.5 | 0.1 | medium | Goede balans kwaliteit/snelheid |
+| **Debugger** | ChatGPT Codex 5.2 xHigh | 0.15 | xhigh | Gespecialiseerd in diepe code analyse |
+| **Security** | Claude Opus 4.6 | 0.1 | xhigh | Diepgaande security analyse, geen risico |
+| **Code Reviewer** | Claude Sonnet 4.5 | 0.15 | medium | Goede balans voor review |
+| **UX Designer** | Gemini 3.2 | 0.8 | high | Creatief werk, multimodaal, web research |
 
 ## Pipeline
 
