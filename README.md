@@ -57,23 +57,24 @@ depot/
 
 ## Agent Overview
 
-| Agent | Mode | Model | Temp | Tools |
-|-------|------|-------|------|-------|
-| **Orchestrator** | primary | `anthropic/claude-haiku-4-5` | 0.1 | task, question, skill |
-| **Planner** | subagent | `anthropic/claude-opus-4-6` | 0.2 | read, grep, glob, webfetch |
-| **Scrum Master** | subagent | `anthropic/claude-haiku-4-5` | 0.1 | read, todowrite |
-| **Developer Core** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, write, edit, bash |
-| **Developer Angular** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, write, edit, bash |
-| **Developer RN** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, write, edit, bash |
-| **Tester** | subagent | `anthropic/claude-sonnet-4-5` | 0.1 | read, write, edit, bash |
-| **Debugger** | subagent | `openai/chatgpt-codex-5.2-xhigh` | 0.15 | read, bash, grep, lsp |
-| **Security** | subagent | `anthropic/claude-opus-4-6` | 0.1 | read, bash, grep, webfetch |
-| **Code Reviewer** | subagent | `anthropic/claude-sonnet-4-5` | 0.15 | read, grep, glob |
-| **UX Designer** | subagent | `google/gemini-3.2` | 0.8 | read, webfetch, websearch |
+| Agent                 | Mode     | Model                            | Temp | Tools                      |
+| --------------------- | -------- | -------------------------------- | ---- | -------------------------- |
+| **Orchestrator**      | primary  | `anthropic/claude-haiku-4-5`     | 0.1  | task, question, skill      |
+| **Planner**           | subagent | `anthropic/claude-opus-4-6`      | 0.2  | read, grep, glob, webfetch |
+| **Scrum Master**      | subagent | `anthropic/claude-haiku-4-5`     | 0.1  | read, todowrite            |
+| **Developer Core**    | subagent | `anthropic/claude-opus-4-6`      | 0.1  | read, write, edit, bash    |
+| **Developer Angular** | subagent | `anthropic/claude-opus-4-6`      | 0.1  | read, write, edit, bash    |
+| **Developer RN**      | subagent | `anthropic/claude-opus-4-6`      | 0.1  | read, write, edit, bash    |
+| **Tester**            | subagent | `anthropic/claude-sonnet-4-5`    | 0.1  | read, write, edit, bash    |
+| **Debugger**          | subagent | `openai/chatgpt-codex-5.2-xhigh` | 0.15 | read, bash, grep, lsp      |
+| **Security**          | subagent | `anthropic/claude-opus-4-6`      | 0.1  | read, bash, grep, webfetch |
+| **Code Reviewer**     | subagent | `anthropic/claude-sonnet-4-5`    | 0.15 | read, grep, glob           |
+| **UX Designer**       | subagent | `google/gemini-3.2`              | 0.8  | read, webfetch, websearch  |
 
 ## Usage
 
 ### Invoking Agents
+
 - **Tab** — switch between primary agents (orchestrator)
 - **@planner** — invoke the planner subagent
 - **@developer-angular** — invoke the Angular developer
@@ -81,21 +82,25 @@ depot/
 - etc.
 
 ### Using Skills
+
 Skills are automatically loaded by agents when relevant. Each agent has explicit skill access permissions defined in its frontmatter.
 
 ## Pipeline
 
 ### Feature Development
+
 ```
 @planner → @ux-designer (if UI) → @scrum-master → @developer-[team] → @tester → @security-specialist → @code-reviewer
 ```
 
 ### Bug Fix
+
 ```
 @debugger → @developer-[team] → @tester
 ```
 
 ### Security Audit
+
 ```
 @security-specialist (standalone)
 ```
@@ -103,16 +108,19 @@ Skills are automatically loaded by agents when relevant. Each agent has explicit
 ## Teams
 
 ### Core Team
+
 - Desktop application: C#, WinForms, VB.NET
 - Complex business logic
 - Agent: `@developer-core`, Skill: `develop-core`
 
-### Angular Team (2 developers)
+### Angular Team
+
 - Angular 17+, TypeScript strict, Tailwind CSS
 - Jest + `.spec.ts`, ESLint + Prettier
 - Agent: `@developer-angular`, Skill: `develop-angular`
 
-### React Native Team (1 developer)
+### React Native Team
+
 - Expo SDK 54+, TypeScript strict
 - Native CSS (StyleSheet) — no Tailwind
 - Jest, ESLint + Prettier
